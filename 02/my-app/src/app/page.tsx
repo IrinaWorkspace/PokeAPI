@@ -1,22 +1,24 @@
 // CSR:
 "use client";
 import { useEffect, useState } from "react";
-import { getUsers } from "../lib/actions/users";
+import { getUsers } from "./lib/actions/users";
 
-export default function Home() {
-  let [users, setUsers] = useState([]);
+export default async function Home() {
+  const users = await getUsers();
+  
+  // let [users, setUsers] = useState([]);
 
-  useEffect(() => {
-    getUsers().then((data: any) => {
-      if (!data || data.error) {
-        return console.log(data?.error);
-      }
-      // if (data.error) {
-      //   return console.log(data.error);
-      // }
-      setUsers(data);
-    });
-  }, []);
+  // useEffect(() => {
+  //   getUsers().then((data: any) => {
+  //     if (!data || data.error) {
+  //       return console.log(data?.error);
+  //     }
+  //     // if (data.error) {
+  //     //   return console.log(data.error);
+  //     // }
+  //     setUsers(data);
+  //   });
+  // }, []);
 
   return (
     <div>
