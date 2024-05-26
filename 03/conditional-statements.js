@@ -575,6 +575,64 @@ calculateVegetablePrice("onion", "Sunday", 3); // Output: 3.90
 calculateVegetablePrice("pepper", "Monday", 10); // Output: 55.00
 calculateVegetablePrice("banana", "Friday", 5); // Output: Error: Invalid vegetable name.
 
+
+// 2 variant
+
+// function calculateVegetablePrice(vegetable, dayOfWeek, quantity) {
+//   let price = 0;
+//   const lowerCaseDayOfWeek = dayOfWeek.toLowerCase();
+//   const lowerCaseVegetable = vegetable.toLowerCase();
+  
+//   const isWeekday = lowerCaseDayOfWeek === "monday" || lowerCaseDayOfWeek === "tuesday" ||
+//                     lowerCaseDayOfWeek === "wednesday" || lowerCaseDayOfWeek === "thursday" ||
+//                     lowerCaseDayOfWeek === "friday";
+//   const isWeekend = lowerCaseDayOfWeek === "saturday" || lowerCaseDayOfWeek === "sunday";
+ 
+//   if (!isWeekday && !isWeekend) {
+//     console.error("Invalid day of the week.");
+//     return;
+//   }
+ 
+//   if (lowerCaseVegetable === "tomato") {
+//     if (isWeekday) {
+//       price = 2.5;
+//     } else {
+//       price = 2.8;
+//     }
+//   } else if (lowerCaseVegetable === "onion") {
+//     if (isWeekday) {
+//       price = 1.2;
+//     } else {
+//       price = 1.3;
+//     }
+//   } else if (lowerCaseVegetable === "lettuce") {
+//     price = 0.85; // same price for both weekday and weekend
+//   } else if (lowerCaseVegetable === "cucumber") {
+//     if (isWeekday) {
+//       price = 1.45;
+//     } else {
+//       price = 1.75;
+//     }
+//   } else if (lowerCaseVegetable === "pepper") {
+//     if (isWeekday) {
+//       price = 5.5;
+//     } else {
+//       price = 3.5;
+//     }
+//   } else {
+//     console.error("Error: Invalid vegetable name.");
+//     return;
+//   }
+ 
+//   console.log((price * quantity).toFixed(2));
+// }
+ 
+// // Example usage:
+// calculateVegetablePrice("tomato", "Tuesday", 2); // Output: 5.00
+// calculateVegetablePrice("onion", "Sunday", 3); // Output: 3.90
+// calculateVegetablePrice("pepper", "Monday", 10); // Output: 55.00
+// calculateVegetablePrice("banana", "Friday", 5); // Output: Error: Invalid vegetable name.
+
 // **************************************************************************************************************************************************
 
 // 14. Holiday
@@ -1212,9 +1270,9 @@ console.log(survivalDecision("night", "forest", "hat")); // Climb a tree for saf
 
 function identifyClimateZone(latitude, hemisphere) {
   if (hemisphere === "N") {
-    if (latitude > 66.5) {
+    if (latitude > 66.5 || latitude < -66.5) {
       return "Arctic Zone";
-    } else if (latitude > 23.5) {
+    } else if (latitude > 23.5 || latitude < -23.5) {
       return "Temperate Zone";
     } else if (latitude === 0) {
       return "Equator";
@@ -1224,9 +1282,9 @@ function identifyClimateZone(latitude, hemisphere) {
       return "Invalid latitude";
     }
   } else if (hemisphere === "S") {
-    if (latitude < -66.5) {
+    if (latitude < -66.5 || latitude > 66.5) {
       return "Arctic Zone";
-    } else if (latitude < -23.5) {
+    } else if (latitude < -23.5 || latitude > 23.5) {
       return "Temperate Zone";
     } else if (latitude === 0) {
       return "Equator";
